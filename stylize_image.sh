@@ -45,8 +45,8 @@ python neural_style.py \
 --content_img_dir "${content_dir}" \
 --style_imgs "${style_filename}" \
 --style_imgs_dir "${style_dir}" \
---img_output_dir: "${output_dir}" \
---img_name: "${output_filename}" \
+--img_output_dir "${output_dir}" \
+--img_name "${output_filename}" \
 --device "${device}" \
 --verbose;
 

@@ -39,7 +39,7 @@ output_image="$3"
 output_dir=$(dirname "$output_image" )
 output_filename=$(basename "$output_image")
 
-echo "Rendering stylized image. This may take a while..."
+echo "Rendering stylized image ${output_filename}. This may take a while..."
 python neural_style.py \
 --content_img "${content_filename}" \
 --content_img_dir "${content_dir}" \

@@ -46,8 +46,8 @@ python neural_style.py \
 --content_img_dir "${content_dir}" \
 --style_imgs "${style_filename}" \
 --style_imgs_dir "${style_dir}" \
---img_output_dir: "${output_dir}" \
---img_name: "r1.jpg" \
+--img_output_dir "${output_dir}" \
+--img_name "r1.jpg" \
 --device "${device}" \
 --verbose;
 
@@ -58,9 +58,9 @@ python neural_style.py \
 --content_img_dir "${content_dir}" \
 --style_imgs "${style_filename}" \
 --style_imgs_dir "${style_dir}" \
---img_output_dir: "${output_dir}" \
+--img_output_dir "${output_dir}" \
 --original_colors \
---img_name: "r2.jpg" \
+--img_name "r2.jpg" \
 --device "${device}" \
 --verbose;
 
@@ -71,9 +71,9 @@ python neural_style.py \
 --content_img_dir "${content_dir}" \
 --style_imgs "${style_filename}" \
 --style_imgs_dir "${style_dir}" \
---img_output_dir: "${output_dir}" \
---content_layers: "conv1_2" \
---img_name: "r3.jpg" \
+--img_output_dir "${output_dir}" \
+--content_layers "conv1_2" \
+--img_name "r3.jpg" \
 --device "${device}" \
 --verbose;
 
@@ -84,9 +84,9 @@ python neural_style.py \
 --content_img_dir "${content_dir}" \
 --style_imgs "${style_filename}" \
 --style_imgs_dir "${style_dir}" \
---img_output_dir: "${output_dir}" \
---content_weight: "9e0" \
---img_name: "r4.jpg" \
+--img_output_dir "${output_dir}" \
+--content_weight "9e0" \
+--img_name "r4.jpg" \
 --device "${device}" \
 --verbose;
 
@@ -97,9 +97,9 @@ python neural_style.py \
 --content_img_dir "${content_dir}" \
 --style_imgs "${style_filename}" \
 --style_imgs_dir "${style_dir}" \
---img_output_dir: "${output_dir}" \
---style_weight: "5e4" \
---img_name: "r5.jpg" \
+--img_output_dir "${output_dir}" \
+--style_weight "5e4" \
+--img_name "r5.jpg" \
 --device "${device}" \
 --verbose;
 
@@ -110,8 +110,8 @@ python neural_style.py \
 --content_img_dir "${content_dir}" \
 --style_imgs "rembrandtportrait.jpg" \
 --style_imgs_dir "${style_dir}" \
---img_output_dir: "${output_dir}" \
---img_name: "r6.jpg" \
+--img_output_dir "${output_dir}" \
+--img_name "r6.jpg" \
 --device "${device}" \
 --verbose;
 

@@ -26,6 +26,8 @@ fi
 #fi
 device='/gpu:0'
 
+
+
 # Parse arguments
 content_image="$1"
 content_dir=$(dirname "$content_image")
@@ -38,6 +40,11 @@ style_filename=$(basename "$style_image")
 output_image="$3"
 output_dir=$(dirname "$output_image" )
 output_filename=$(basename "$output_image")
+
+if [ -z "$3"]; then
+    output_dir='results'
+    output_filename=$(date +%m-%d-%Y-%H-%M)
+fi
 
 echo "Rendering stylized image ${output_filename}. This may take a while..."
 python neural_style.py \

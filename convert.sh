@@ -1,17 +1,15 @@
-bash stylize_image.sh ./image_input/Ams1.jpg ./styles/delftetching.jpg
-bash stylize_image.sh ./image_input/Ams1.jpg ./styles/dutchcity.jpg
-bash stylize_image.sh ./image_input/Ams1.jpg ./styles/JapaneseMaple.jpg
-bash stylize_image.sh ./image_input/Ams1.jpg ./styles/rembrandtcountry.jpg
-bash stylize_image.sh ./image_input/Ams1.jpg ./styles/rembrandthill.jpg
-bash stylize_image.sh ./image_input/Ams1.jpg ./styles/rembrandpaint.jpg
-bash stylize_image.sh ./image_input/Ams1.jpg ./styles/rembrandportait.jpg
-bash stylize_image.sh ./image_input/brug.jpg ./styles/delftetching.jpg
-bash stylize_image.sh ./image_input/brug.jpg ./styles/dutchcity.jpg
-bash stylize_image.sh ./image_input/brug.jpg ./styles/JapaneseMaple.jpg
-bash stylize_image.sh ./image_input/brug.jpg ./styles/rembrandtcountry.jpg
-bash stylize_image.sh ./image_input/brug.jpg ./styles/rembrandthill.jpg
-bash stylize_image.sh ./image_input/brug.jpg ./styles/rembrandpaint.jpg
-bash stylize_image.sh ./image_input/brug.jpg ./styles/rembrandportait.jpg
+bash stylize_image.sh ./image_input/IMG_1585.jpg ./styles/monetparis.jpg
+bash stylize_image.sh ./image_input/IMG_1585.jpg ./styles/monetparis2.jpg
+bash stylize_image.sh ./image_input/IMG_1585.jpg ./styles/monetparis3.jpg
+
+bash stylize_image.sh ./image_input/IMG_1589.jpg ./styles/monetparis.jpg
+bash stylize_image.sh ./image_input/IMG_1589.jpg ./styles/monetparis2.jpg
+bash stylize_image.sh ./image_input/IMG_1589.jpg ./styles/monetparis3.jpg
+
+bash stylize_image.sh ./image_input/IMG_1609.jpg ./styles/monetparis.jpg
+bash stylize_image.sh ./image_input/IMG_1609.jpg ./styles/monetparis2.jpg
+bash stylize_image.sh ./image_input/IMG_1609.jpg ./styles/monetparis3.jpg
+
 
 
 

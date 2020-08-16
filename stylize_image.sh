@@ -55,7 +55,7 @@ python neural_style.py \
 --img_output_dir "${output_dir}" \
 --img_name "${output_filename}" \
 --device "${device}" \
---max_size 1500
+--max_size 1024
 --verbose;
 
 # --max_size 1024

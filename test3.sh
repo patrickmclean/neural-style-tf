@@ -1,0 +1,1 @@
+python3 neural_style_web.py --style_imgs f03a03a1-3c10-4442-8677-f71447b621ec.jpg --content_img dbfb738d-65a6-4795-856e-b56d432ce57b.jpg --max_size 64 --device /cpu:0 --content_img_dir ./imageprocessing/input/ --style_imgs_dir ./imageprocessing/reference/ --img_output_dir ./imageprocessing/output/ --img_name e5bc43a9-45dc-45a6-9666-9f7000400c0d.jpg

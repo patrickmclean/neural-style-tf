@@ -24,7 +24,7 @@ fi
 #else
 #  device='/gpu:0'
 #fi
-device='/gpu:0'
+device='/cpu:0'
 
 
 

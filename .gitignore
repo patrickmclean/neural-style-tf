@@ -4,3 +4,5 @@ imagenet-vgg-verydeep-19.mat
 /video_input/*
 /styles/*
 /examples/*
+/imageprocessing/*
+

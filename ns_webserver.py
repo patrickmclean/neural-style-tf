@@ -2,6 +2,7 @@ import os, os.path
 import random
 import string
 import json
+import time
 
 import cherrypy
 from neural_style_web import launchNeuralStyle
@@ -11,6 +12,21 @@ class PageLoader(object):
     @cherrypy.expose
     def index(self):
         return open('index.html')
+
+# Serverstream, to send completed status back when processing is done
+    @cherrypy.expose
+    def getstatus(self):
+        cherrypy.response.headers["Content-Type"] = "text/event-stream"
+        def generator():
+            statusFile = open('status_file',"r")
+            while True:
+                # Best (horrible) idea so far. Poll here for the file system and send back status
+                time.sleep(5)
+                statusFile.seek(0,0)
+                status = statusFile.read()
+                yield "event: time\n" + "data: " + str(time.time()) + " " + status + "\n\n"
+        return generator()
+    getstatus._cp_config = {'response.stream': True}
 
 # Call neural styles
 @cherrypy.expose
@@ -24,14 +40,14 @@ class WebServiceLoader(object):
         child_pid = os.fork()
         if child_pid == 0:
             # new process
-            print('new process')
-            launchNeuralStyle(inputFile, referenceFile,outputFile)
-        else:
-            # existing process
-            
             response = ('{"output":"%s"}' % outputFile)
             print('existing process '+response)
-            return json.dumps(response).encode('utf8')
+            return json.dumps(response).encode('utf8')            
+        else:
+            # existing process
+            print('new process')
+            launchNeuralStyle(inputFile, referenceFile,outputFile)
+
 
 if __name__ == '__main__':
     conf = {

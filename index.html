@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Neural Style Webserver</title>
+    <style>html,body,#test{height:98%;}</style>
 </head>
 
 
@@ -11,7 +12,23 @@
 	<body>
     This is the neural style webserver.
     Yes, I'm up.
+    <br>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+          var source = new EventSource('getstatus');
+          source.addEventListener('time', function (event) {
+            document.getElementById('test').innerHTML += event.data + "\n";
+          });
+          source.addEventListener('error', function (event){
+            console.log('SSE error:', event);
+            console.log('SSE state:', source.readyState);
+          });
+        }, false);
+      </script>
+      <textarea id="test"></textarea>
+    
+
         
 	</body>
 </html>
-

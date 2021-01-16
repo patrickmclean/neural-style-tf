@@ -820,11 +820,16 @@ def render_single_image():
   style_imgs = get_style_images(content_img)
   with tf.Graph().as_default():
     print('\n---- RENDERING SINGLE IMAGE ----\n')
+    statusFile = open('status_file',"w")
+    statusFile.write("Started Rendering {}".format(args.content_img))
+    statusFile.flush()
     init_img = get_init_image(args.init_img_type, content_img, style_imgs)
     tick = time.time()
     stylize(content_img, style_imgs, init_img)
     tock = time.time()
     print('Single image elapsed time: {}'.format(tock - tick))
+    statusFile.write("Completed Rendering {}".format(args.content_img))
+    statusFile.close()
 
 def render_video():
   for frame in range(args.start_frame, args.end_frame+1):
@@ -876,9 +881,9 @@ class launchNeuralStyle:
         "--content_img", inputFile, \
         "--device", "/cpu:0", \
         "--max_size", "64",\
-        "--content_img_dir", "./imageprocessing/input/", \
-        "--style_imgs_dir", "./imageprocessing/reference/", \
-        "--img_output_dir", "./imageprocessing/output/", \
+        "--content_img_dir", "/Users/patrickmclean/odrive/GD-Main/Development/iBrowser2/imageprocessing/input/", \
+        "--style_imgs_dir", "/Users/patrickmclean/odrive/GD-Main/Development/iBrowser2/imageprocessing/reference/", \
+        "--img_output_dir", "/Users/patrickmclean/odrive/GD-Main/Development/iBrowser2/imageprocessing/output/", \
         "--img_name", outputFile]
         args = parse_args()
         if args.video: render_video()

@@ -6,6 +6,7 @@ import time
 
 import cherrypy
 from neural_style_web import launchNeuralStyle
+from awss3 import s3Download
 
 # Return index page (this is just for reference)
 class PageLoader(object):
@@ -34,7 +35,7 @@ class WebServiceLoader(object):
 
     @cherrypy.tools.accept(media='application/x-www-form-urlencoded')
     def POST(self,inputFile,referenceFile,outputFile):
-        print('called '+inputFile)
+        print('called '+inputFile+" "+referenceFile)
         # somewhat hacky way of going asynchronous. Split this process in two, 
         # one returns immediately, the other does the processing
         child_pid = os.fork()
@@ -46,7 +47,11 @@ class WebServiceLoader(object):
         else:
             # existing process
             print('new process')
+            # download the files first
+            s3Download('input',inputFile)
+            s3Download('reference',referenceFile)
             launchNeuralStyle(inputFile, referenceFile,outputFile)
+            # when we're done we need to add an upload
 
 
 if __name__ == '__main__':

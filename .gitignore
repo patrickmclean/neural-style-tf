@@ -5,4 +5,4 @@ imagenet-vgg-verydeep-19.mat
 /styles/*
 /examples/*
 /imageprocessing/*
-
+config.ini

@@ -5,17 +5,27 @@ This is a web api version of the neural style renderer
 * python get-pip.py
 ##
 
+AWS Linux install
 * Python 2 is pre-installed, need to get to 3
 * for some reason 3.6 is not available so started with 3.7
 sudo yum install python37
 sudo yum install git
 
-Dependencies:
-* Python 3.6
-* pip install boto3 (aws)
+# maybe not? sudo -H pip3 install --upgrade pip
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py --user
+
+pip install --upgrade --force-reinstall --no-cache-dir tensorflow==1.15.0
+pip install scipy
+pip install opencv-python
+pip install boto3 (aws)
+git clone https://github.com/patrickmclean/neural-style-tf.git
+wget https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat
+Test Run: bash stylize_image.sh ./image_input/lion.jpg ./styles/kandinsky.jpg
 
 
-Install for neural style:
+
+Install for neural style (old, just for reference):
 
 Steps:
 	• If no p3: pip install python36
@@ -26,7 +36,7 @@ Steps:
 	• pip install scipy (aws)
 	• Install sw: git clone https://github.com/patrickmclean/neural-style-tf.git
 	• Update: git fetch --all; get reset --hard origin/master (or git pull after erasing local copies)
-	• Download weights:wget https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat)
+	• Download weights:wget https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat
 	• Run: bash stylize_image.sh ./image_input/lion.jpg ./styles/kandinsky.jpg
 
 

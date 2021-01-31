@@ -51,8 +51,10 @@ class WebServiceLoader(object):
             # download the files first
             s3Download('input/',inputFile)
             s3Download('reference/',referenceFile)
-            launchNeuralStyle(inputFile, referenceFile,outputFile)
-            s3Upload(outputFile)
+            launchNeuralStyle(inputFile,referenceFile,outputFile)
+            outputFilePath = 'output/' + outputFile + '/' + outputFile + '.png' # this is fixed for neural style
+            outputFile = outputFile + '.png'
+            s3Upload(outputFilePath,outputFile,"outputBucket")
             # then some kind of a notification
 
 

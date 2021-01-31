@@ -1,16 +1,11 @@
 This is a web api version of the neural style renderer
 
-# this may not be needed
-* Get pip: curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-* python get-pip.py
-##
-
 AWS Linux install
 * Python 2 is pre-installed, need to get to 3
 * for some reason 3.6 is not available so started with 3.7
 sudo yum install python37
 sudo yum install git
-
+sudo yum install mesa-libGL
 # maybe not? sudo -H pip3 install --upgrade pip
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py --user
@@ -20,7 +15,7 @@ pip install scipy
 pip install opencv-python
 pip install boto3 (aws)
 git clone https://github.com/patrickmclean/neural-style-tf.git
-wget https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat
+wget https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat (make sure you're in neural style directory)
 Test Run: bash stylize_image.sh ./image_input/lion.jpg ./styles/kandinsky.jpg
 
 

@@ -8,6 +8,7 @@ import time
 import cv2
 import os
 import sys
+from configparser import ConfigParser 
 
 '''
   parsing and configuration
@@ -480,8 +481,12 @@ def read_image(path):
   return img
 
 def write_image(path, img):
-  img = postprocess(img)
-  cv2.imwrite(path, img)
+  # img = postprocess(img)   Turn this back on!
+  # cv2.imwrite(path, img)
+  print('path '+path)
+  f = open(path, 'a')
+  f.write('test')
+  f.close()
 
 def preprocess(img):
   imgpre = np.copy(img)
@@ -825,7 +830,8 @@ def render_single_image():
     statusFile.flush()
     init_img = get_init_image(args.init_img_type, content_img, style_imgs)
     tick = time.time()
-    stylize(content_img, style_imgs, init_img)
+    # stylize(content_img, style_imgs, init_img) The main deal!
+    write_image_output(args.img_name, content_img, style_imgs, init_img) # Fake line - swap comment with above
     tock = time.time()
     print('Single image elapsed time: {}'.format(tock - tick))
     statusFile.write("Completed Rendering {}".format(args.content_img))
@@ -875,15 +881,19 @@ class launchNeuralStyle:
     def __init__(self,inputFile,referenceFile,outputFile) :
         print('were in!')
         print('cwd '+os.getcwd())
+        #Read config.ini file
+        config_object = ConfigParser()
+        config_object.read("config.ini")
+        imageRoot = config_object["LOCALFS"]["imageRoot"]
         global args
         sys.argv = ["neural_style_web.py",\
         "--style_imgs", referenceFile, \
         "--content_img", inputFile, \
         "--device", "/cpu:0", \
         "--max_size", "64",\
-        "--content_img_dir", "/Users/patrickmclean/odrive/GD-Main/Development/iBrowser2/imageprocessing/input/", \
-        "--style_imgs_dir", "/Users/patrickmclean/odrive/GD-Main/Development/iBrowser2/imageprocessing/reference/", \
-        "--img_output_dir", "/Users/patrickmclean/odrive/GD-Main/Development/iBrowser2/imageprocessing/output/", \
+        "--content_img_dir", imageRoot + "input/", \
+        "--style_imgs_dir", imageRoot + "reference/", \
+        "--img_output_dir", imageRoot + "output/", \
         "--img_name", outputFile]
         args = parse_args()
         if args.video: render_video()

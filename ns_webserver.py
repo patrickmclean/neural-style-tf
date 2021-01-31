@@ -7,6 +7,7 @@ import time
 import cherrypy
 from neural_style_web import launchNeuralStyle
 from awss3 import s3Download
+from awss3 import s3Upload
 
 # Return index page (this is just for reference)
 class PageLoader(object):
@@ -48,10 +49,11 @@ class WebServiceLoader(object):
             # existing process
             print('new process')
             # download the files first
-            s3Download('input',inputFile)
-            s3Download('reference',referenceFile)
+            s3Download('input/',inputFile)
+            s3Download('reference/',referenceFile)
             launchNeuralStyle(inputFile, referenceFile,outputFile)
-            # when we're done we need to add an upload
+            s3Upload(outputFile)
+            # then some kind of a notification
 
 
 if __name__ == '__main__':

@@ -6,3 +6,5 @@ imagenet-vgg-verydeep-19.mat
 /examples/*
 /imageprocessing/*
 config.ini
+config.svr.ini
+

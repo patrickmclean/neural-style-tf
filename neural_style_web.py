@@ -830,7 +830,7 @@ def render_single_image():
     statusFile.flush()
     init_img = get_init_image(args.init_img_type, content_img, style_imgs)
     tick = time.time()
-    stylize(content_img, style_imgs, init_img) The main deal!
+    stylize(content_img, style_imgs, init_img) # The main deal!
     #write_image_output(args.img_name, content_img, style_imgs, init_img) # Fake line - swap comment with above
     tock = time.time()
     print('Single image elapsed time: {}'.format(tock - tick))

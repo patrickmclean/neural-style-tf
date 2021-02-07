@@ -481,12 +481,12 @@ def read_image(path):
   return img
 
 def write_image(path, img):
-  # img = postprocess(img)   Turn this back on!
-  # cv2.imwrite(path, img)
-  print('path '+path)
-  f = open(path, 'a')
-  f.write('test')
-  f.close()
+  img = postprocess(img)   
+  cv2.imwrite(path, img)
+  #print('path '+path)   This replaces the two lines above when testing
+  #f = open(path, 'a')
+  #f.write('test')
+  #f.close()
 
 def preprocess(img):
   imgpre = np.copy(img)
@@ -830,8 +830,8 @@ def render_single_image():
     statusFile.flush()
     init_img = get_init_image(args.init_img_type, content_img, style_imgs)
     tick = time.time()
-    # stylize(content_img, style_imgs, init_img) The main deal!
-    write_image_output(args.img_name, content_img, style_imgs, init_img) # Fake line - swap comment with above
+    stylize(content_img, style_imgs, init_img) The main deal!
+    #write_image_output(args.img_name, content_img, style_imgs, init_img) # Fake line - swap comment with above
     tock = time.time()
     print('Single image elapsed time: {}'.format(tock - tick))
     statusFile.write("Completed Rendering {}".format(args.content_img))

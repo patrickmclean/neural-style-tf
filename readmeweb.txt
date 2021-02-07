@@ -1,6 +1,7 @@
 This is a web api version of the neural style renderer
 
-AWS Linux install
+
+## AWS Linux initial install ##
 * Python 2 is pre-installed, need to get to 3
 * for some reason 3.6 is not available so started with 3.7
 sudo yum install python37
@@ -17,6 +18,11 @@ pip install boto3 (aws)
 git clone https://github.com/patrickmclean/neural-style-tf.git
 wget https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat (make sure you're in neural style directory)
 Test Run: bash stylize_image.sh ./image_input/lion.jpg ./styles/kandinsky.jpg
+pip install cherrypy
+
+## Update software ##
+Update: git fetch --all; git reset --hard origin/master (or git pull after erasing local copies)
+Run: python3 
 
 
 

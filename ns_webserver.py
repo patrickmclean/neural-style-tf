@@ -5,9 +5,11 @@ import json
 import time
 
 import cherrypy
+import requests
 from neural_style_web import launchNeuralStyle
 from awss3 import s3Download
 from awss3 import s3Upload
+from configparser import ConfigParser 
 
 # Return index page (this is just for reference)
 class PageLoader(object):
@@ -51,11 +53,20 @@ class WebServiceLoader(object):
             # download the files first
             s3Download('input/',inputFile)
             s3Download('reference/',referenceFile)
-            launchNeuralStyle(inputFile,referenceFile,outputFile)
-            outputFilePath = 'output/' + outputFile + '/' + outputFile + '.png' # this is fixed for neural style
-            outputFile = outputFile + '.png'
-            s3Upload(outputFilePath,outputFile,"outputBucket")
-            # then some kind of a notification
+            #launchNeuralStyle(inputFile,referenceFile,outputFile)
+            #outputFilePath = 'output/' + outputFile + '/' + outputFile + '.png' # this is fixed for neural style
+            #outputFile = outputFile + '.png'
+            #s3Upload(outputFilePath,outputFile,"outputBucket")
+            
+            # write back that the output has completed
+            config_object = ConfigParser()
+            config_object.read("config.ini")
+            ibURL = config_object["IBROWSER"]["url"]+'/outputcomplete'
+            payload = {'filename', outputFile}
+            response = requests.post(ibURL, data=payload)
+        
+            # then some kind of a notification - call to ibrowser outputcomplete call
+
 
 
 if __name__ == '__main__':
@@ -72,8 +83,8 @@ if __name__ == '__main__':
     }
     webapp = PageLoader()
     webapp.neuralstyle = WebServiceLoader()
-    #cherrypy.config.update({'server.socket_host': '0.0.0.0', # for local this makes it transmit through host
-    #                        'server.socket_port':8082})
-    cherrypy.config.update({'server.socket_host': '172.31.23.104', # for server
+    cherrypy.config.update({'server.socket_host': '0.0.0.0', # for local this makes it transmit through host
                             'server.socket_port':8082})
+    #cherrypy.config.update({'server.socket_host': '172.31.23.104', # for server
+    #                        'server.socket_port':8082})
     cherrypy.quickstart(webapp, '/', conf)

@@ -825,16 +825,16 @@ def render_single_image():
   style_imgs = get_style_images(content_img)
   with tf.Graph().as_default():
     print('\n---- RENDERING SINGLE IMAGE ----\n')
-    statusFile = open('status_file',"w")
-    statusFile.write("Started Rendering {}".format(args.content_img))
-    statusFile.flush()
     init_img = get_init_image(args.init_img_type, content_img, style_imgs)
     tick = time.time()
+    statusFile = open('status_file',"w")
+    statusFile.write("Started Rendering {} {}\n".format(tick, args.content_img))
+    statusFile.flush()
     stylize(content_img, style_imgs, init_img) # The main deal!
     #write_image_output(args.img_name, content_img, style_imgs, init_img) # Fake line - swap comment with above
     tock = time.time()
     print('Single image elapsed time: {}'.format(tock - tick))
-    statusFile.write("Completed Rendering {}".format(args.content_img))
+    statusFile.write("Completed Rendering {} {}".format(tock, args.content_img))
     statusFile.close()
 
 def render_video():

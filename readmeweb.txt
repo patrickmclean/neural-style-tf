@@ -58,3 +58,11 @@ CPATH=~/.cudnn/active/cuda/include:$CPATH
 LIBRARY_PATH=~/.cudnn/active/cuda/lib64:$LIBRARY_PATH
 (cuda version nvcc --version)
 
+##### Running on the GPU version #####
+cd ArtPhotos
+source bin/activate
+LD_LIBRARY_PATH=~/.cudnn/active/cuda/lib64:$LD_LIBRARY_PATH
+CPATH=~/.cudnn/active/cuda/include:$CPATH
+LIBRARY_PATH=~/.cudnn/active/cuda/lib64:$LIBRARY_PATH
+cd neural_style
+./stylize_image image_input/imagename styles/imagename

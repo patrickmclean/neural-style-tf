@@ -53,19 +53,17 @@ class WebServiceLoader(object):
             # download the files first
             s3Download('input/',inputFile)
             s3Download('reference/',referenceFile)
-            #launchNeuralStyle(inputFile,referenceFile,outputFile)
-            #outputFilePath = 'output/' + outputFile + '/' + outputFile + '.png' # this is fixed for neural style
-            #outputFile = outputFile + '.png'
-            #s3Upload(outputFilePath,outputFile,"outputBucket")
+            launchNeuralStyle(inputFile,referenceFile,outputFile)
+            outputFilePath = 'output/' + outputFile + '/' + outputFile + '.png' # this is fixed for neural style
+            outputFile = outputFile + '.png'
+            s3Upload(outputFilePath,outputFile,"outputBucket")
             
             # write back that the output has completed
             config_object = ConfigParser()
             config_object.read("config.ini")
             ibURL = config_object["IBROWSER"]["url"]+'/outputcomplete'
-            payload = {'filename', outputFile}
-            response = requests.post(ibURL, data=payload)
-        
-            # then some kind of a notification - call to ibrowser outputcomplete call
+            payload = {'filename': outputFile}
+            response = requests.post(ibURL, json=payload)
 
 
 

@@ -889,8 +889,8 @@ class launchNeuralStyle:
         sys.argv = ["neural_style_web.py",\
         "--style_imgs", referenceFile, \
         "--content_img", inputFile, \
-        "--device", "/cpu:0", \
-        "--max_size", "64",\
+        "--device", "/"+config_object["OPTIONS"]["cpugpu"]+":0", \
+        "--max_size", config_object["OPTIONS"]["maxsize"],\
         "--content_img_dir", imageRoot + "input/", \
         "--style_imgs_dir", imageRoot + "reference/", \
         "--img_output_dir", imageRoot + "output/", \

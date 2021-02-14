@@ -81,8 +81,8 @@ if __name__ == '__main__':
     }
     webapp = PageLoader()
     webapp.neuralstyle = WebServiceLoader()
-    cherrypy.config.update({'server.socket_host': '0.0.0.0', # for local this makes it transmit through host
-                            'server.socket_port':8082})
-    #cherrypy.config.update({'server.socket_host': '172.31.23.104', # for server
+    #cherrypy.config.update({'server.socket_host': '0.0.0.0', # for local this makes it transmit through host
     #                        'server.socket_port':8082})
+    cherrypy.config.update({'server.socket_host': '172.31.23.104', # for server
+                            'server.socket_port':8082})
     cherrypy.quickstart(webapp, '/', conf)

@@ -19,10 +19,12 @@ git clone https://github.com/patrickmclean/neural-style-tf.git
 wget https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat (make sure you're in neural style directory)
 Test Run: bash stylize_image.sh ./image_input/lion.jpg ./styles/kandinsky.jpg
 pip install cherrypy
+pip install requests
 
 ## Update software ##
 Update: git fetch --all; git reset --hard origin/master (or git pull after erasing local copies)
-Run: python3 
+Run: python3 ns_webserver.py &
+
 
 
 
